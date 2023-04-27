@@ -5,16 +5,22 @@ public class Carro {
     private int numerosPlaca;
     private int numChassi;
     private int velocidadeAtual;
+    private Motorista motorista;
 
     public int getVelocidadeAtual() {
         return velocidadeAtual;
     }
 
-    public Carro() {}
+    public Carro(Motorista motorista) {
+        this.motorista = motorista;
+        motorista.setVeiculoAtual(this);
+    }
 
-    public Carro(String placa, int numChassi){
+    public Carro(String placa, int numChassi, Motorista motorista){
         setPlaca(placa);
         this.numChassi = numChassi;
+        this.motorista = motorista;
+        motorista.setVeiculoAtual(this);
     }
 
     public String getPlaca() {
@@ -44,11 +50,19 @@ public class Carro {
         this.numChassi = numChassi;
     }
 
-    public void acelerar() {
+    public Motorista getMotorista() {
+        return motorista;
+    }
+
+    public void setMotorista(Motorista motorista) {
+        this.motorista = motorista;
+    }
+
+    void acelerar() {
         this.velocidadeAtual++;
     }
 
-    public void acelerar(int limite) {
+    void acelerar(int limite) {
         for (int i = velocidadeAtual; i < limite; i++) {
             acelerar();
         }

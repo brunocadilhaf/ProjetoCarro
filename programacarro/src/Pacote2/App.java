@@ -1,6 +1,7 @@
 package Pacote2;
 
 import Pacote3.Carro;
+import Pacote3.Motorista;
 
 public class App {
     public static void main(String[] args) throws Exception {
@@ -8,16 +9,13 @@ public class App {
         System.out.print("\033[H\033[2J");
         System.out.flush();
         /* Limpa o terminal */
-        Carro carro = new Carro("ABC1234", 123456789);
-        System.out.println("Velocidade do carro: " + carro.getVelocidadeAtual());
-        System.out.println("ACELERANDO O CARRO...");
-        for (int i = 0; i < 10; i++) {
-            carro.acelerar();
-        }
-        System.out.println("Velocidade do carro: " + carro.getVelocidadeAtual());
+        Motorista mot = new Motorista("Leandro", 123456);
+        Carro carro = new Carro("ABC1234", 123456789, mot);
 
-        System.out.println("ACELERANDO ATÉ 50 KM/H");
-        carro.acelerar(50);
-        System.out.println("Velocidade do carro: " + carro.getVelocidadeAtual());
+        System.out.println("PASSAGEIRO: Motorista, acelera o carro até 100Km/h!");
+        System.out.println("MOTORISTA: Ok! Vamos lá!");
+        carro.getMotorista().acelerar(100);
+
+        System.out.printf("Velocidade do carro: %s km/h", carro.getVelocidadeAtual());
     }
 }
